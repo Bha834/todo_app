@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Todo App</title>
+</head>
+<body>
+    <h1>Todo List</h1>
+    <a href="/add">Add Task</a>
+    <ul>
+        {% for t in todos %}
+        <li>
+            {{ t.task }}
+            {% if t.logo_url %}
+                <img src="{{ t.logo_url }}" width="50">
+            {% endif %}
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
