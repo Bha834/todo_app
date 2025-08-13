@@ -16,10 +16,18 @@ class Todo(db.Model):
 # S3 Client
 s3 = boto3.client("s3", region_name=S3_REGION)
 
+# @app.route("/")
+# def index():
+#     todos = Todo.query.all()
+#     return render_template("index.html", todos=todos)
 @app.route("/")
 def index():
-    todos = Todo.query.all()
+    try:
+        todos = Todo.query.all()
+    except Exception as e:
+        return f"Error: {e}"
     return render_template("index.html", todos=todos)
+
 
 @app.route("/add", methods=["GET", "POST"])
 def add():
